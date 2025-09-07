@@ -2,7 +2,18 @@ import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import PropertyCard from "@/components/property/PropertyDetail"; // Assume this component exists
+import PropertyCard from "@/components/property/PropertyDetail";
+
+// Define the type of a property
+interface Property {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  location: string;
+  imageUrl?: string;
+  // add more fields from your API if needed
+}
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,13 +26,13 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
-  const [properties, setProperties] = useState([]);
+  const [properties, setProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get(
+        const response = await axios.get<Property[]>(
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/properties`
         );
         setProperties(response.data);

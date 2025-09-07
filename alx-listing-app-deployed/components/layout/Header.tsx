@@ -90,7 +90,11 @@ const Header: FC = () => {
                 </div>
 
                 {/* Search Button */}
-                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-3 rounded-full mr-2 hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105">
+                <button
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-3 rounded-full mr-2 hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105"
+                  title="Search"
+                  aria-label="Search"
+                >
                   <Search className="w-4 h-4" />
                 </button>
               </div>
